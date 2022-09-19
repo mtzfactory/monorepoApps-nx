@@ -1,94 +1,75 @@
+![React Native](https://img.shields.io/badge/react_native_v0.70-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)
+![Testig-Library](https://img.shields.io/badge/testing%20library-323330?style=for-the-badge&logo=testing-library&logoColor=red)
+![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
 
+# A React Native Monorepo Test With Nx
 
-# MonorepoAppsNx
+This repository is just a PoC of a RN mono-repo using [Nx](https://nx.dev).
 
-This project was generated using [Nx](https://nx.dev).
+## Installation
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+Follow this instructions to install the dependencies:
 
-🔎 **Smart, Fast and Extensible Build System**
+1. Clone the repo:
 
-## Adding capabilities to your workspace
+   ```bash
+   git clone git@github.com:mtzfactory/monorepoApps-nx.git
+   ```
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+2. Install dependencies:
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+   ```bash
+   cd monorepoApps-nx
+   yarn
+   ```
 
-Below are our core plugins:
+## Folder structure
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+The mono-repo uses `Nx` to help us organize the repository.
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+The project is divided mainly into two main areas: `apps` and `libs`,
+with the following structure:
 
-## Generate an application
+```
+├── apps/
+│   ├── mobile/
+│   └── mobile-e2e/
+├── libs/
+│   ├── eslint-config/
+│   ├── my-app/
+│   └── ui/
+└── package.json
+```
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+The `apps` folder keeps the apps:
 
-> You can use any of the plugins above to generate applications as well.
+- `mobile/`, folder containing the mobile app, with the RN dependencies.
+- `mobile-e2e`, folder containing a e2e test environment.
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+The `libs` folder keeps all the shared packages used by the apps:
 
-## Generate a library
+- `eslint-config/`, folder containing the eslint rules shared between our codebase.
+- `my-app/`, folder containing the application logic.
+- `ui/`, folder containing the implementation of a basic UI library.
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+## Starting the app
 
-> You can also use any of the plugins above to generate libraries as well.
+Start the metro server with the following command:
 
-Libraries are shareable across libraries and applications. They can be imported from `@monorepo-apps-nx/mylib`.
+```bash
+yarn start mobile {--reset-cache}`
+```
 
-## Development server
+Build the app and start the simulator with the following command:
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+```bash
+yarn mobile run-{andorid|ios}`
+```
 
-## Code scaffolding
+## Available commands
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+Pleae, find more commands [here](/docs/working-with-nx.md)
