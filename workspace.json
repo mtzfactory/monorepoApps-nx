@@ -4,6 +4,7 @@
   "projects": {
     "mobile": "apps/mobile",
     "mobile-e2e": "apps/mobile-e2e",
+    "my-app": "libs/my-app",
     "ui": "libs/ui"
   }
 }

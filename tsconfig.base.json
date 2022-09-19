@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@monorepo-apps-nx/my-app": ["libs/my-app/src/index.ts"],
       "@monorepo-apps-nx/ui": ["libs/ui/src/index.ts"]
     }
   },
